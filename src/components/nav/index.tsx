@@ -9,6 +9,7 @@ import { useGSAP } from "@gsap/react";
 import { useLenis } from "lenis/react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import Image from "next/image";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, CustomEase);
 
@@ -263,33 +264,33 @@ export default function Navbar() {
           ? { full: 80, compact: 68 }
           : { full: 64, compact: 56 };
 
-           const st = ScrollTrigger.create({
-             start: 0,
-             end: "max",
-             onUpdate: (self) => {
-               const y = self.scroll();
-               const state = ui.current;
+      const st = ScrollTrigger.create({
+        start: 0,
+        end: "max",
+        onUpdate: (self) => {
+          const y = self.scroll();
+          const state = ui.current;
 
-               // Glass background + compact height once you've scrolled a little
-               const scrolled = y > 40;
-               if (scrolled !== state.scrolled) {
-                 state.scrolled = scrolled;
-                 const h = heights();
-                 gsap.to(bg, {
-                   opacity: scrolled && !state.open ? 1 : 0,
-                   duration: 0.5,
-                   ease: "power2.out",
-                   overwrite: true,
-                 });
-                 gsap.to(inner, {
-                   height: scrolled ? h.compact : h.full,
-                   duration: 0.6,
-                   ease: "hero",
-                   overwrite: true,
-                 });
-               }
-             },
-           });
+          // Glass background + compact height once you've scrolled a little
+          const scrolled = y > 40;
+          if (scrolled !== state.scrolled) {
+            state.scrolled = scrolled;
+            const h = heights();
+            gsap.to(bg, {
+              opacity: scrolled && !state.open ? 1 : 0,
+              duration: 0.5,
+              ease: "power2.out",
+              overwrite: true,
+            });
+            gsap.to(inner, {
+              height: scrolled ? h.compact : h.full,
+              duration: 0.6,
+              ease: "hero",
+              overwrite: true,
+            });
+          }
+        },
+      });
 
       /* Hover effects: mouse devices only */
       const mmPointer = gsap.matchMedia();
@@ -397,15 +398,25 @@ export default function Navbar() {
             <Link
               href="/"
               onClick={() => setMenu(false)}
-              className="block overflow-hidden py-1"
-              aria-label="ESTORA home"
+              className="block overflow-hidden py-1 "
+              aria-label="ESTORA home "
             >
-              <span className="nav-brand-inner nav-reveal flex flex-col leading-none">
-                <span className="font-display text-lg font-bold tracking-tight text-estora-text-primary lg:text-xl">
-                  {siteConfig.brand.name}
-                </span>
-                <span className="mt-0.5 font-body text-[10px] uppercase tracking-[0.18em] text-estora-text-muted">
-                  {siteConfig.brand.descriptor}
+              <span className="nav-brand-inner nav-reveal flex items-center gap-3 leading-none">
+                <Image
+                  src="https://res.cloudinary.com/dk5mfu099/image/upload/v1791883199/___1_-removebg-preview_emp4cg.png"
+                  alt="logo image"
+                  width={40}
+                  height={40}
+                  priority
+                  className="h-8 w-8 shrink-0 object-contain lg:h-10 lg:w-10 bg-white rounded-3xl shadow-md border-2 ring border-estora-accent"
+                />
+                <span className="flex flex-col leading-none">
+                  <span className="font-display text-lg font-bold tracking-tight text-estora-text-primary lg:text-xl">
+                    {siteConfig.brand.name}
+                  </span>
+                  <span className="mt-0.5 font-body text-[10px] uppercase tracking-[0.18em] text-estora-text-muted">
+                    {siteConfig.brand.descriptor}
+                  </span>
                 </span>
               </span>
             </Link>

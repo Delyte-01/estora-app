@@ -4,9 +4,9 @@ export const siteConfig = {
     descriptor: "PROPERTY GROUP",
   },
   contact: {
-    whatsappNumber: "+2348000000000",
+    whatsappNumber: "+2348139760048",
     email: "hello@estora.example",
-    phoneDisplay: "+234 800 000 0000",
+    phoneDisplay: "+234 8139760048",
   },
   nav: [
     { label: "Properties", href: "/properties" },
