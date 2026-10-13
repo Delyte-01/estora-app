@@ -1,0 +1,232 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ========================================
+   ESTORA — TAILWIND THEME
+======================================== */
+
+@theme inline {
+  /* Fonts */
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-sans: var(--font-inter);
+
+  /* Theme colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Chart colors */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* ESTORA brand colors */
+  --color-estora-bg: #181a19;
+  --color-estora-bg-elevated: #222523;
+  --color-estora-accent: #c7ff4a;
+  --color-estora-text-primary: #f7f7f2;
+  --color-estora-text-muted: #aaafa8;
+  --color-estora-ivory: #f4f2eb;
+  --color-estora-text-dark: #20231f;
+  --color-estora-border-dark: rgba(255, 255, 255, 0.13);
+  --color-estora-border-light: rgba(24, 26, 25, 0.12);
+
+  /* Border radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Gradients */
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --background-image-gradient-conic: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--tw-gradient-stops)
+  );
+}
+
+/* ========================================
+   ESTORA BRAND TOKENS
+======================================== */
+
+:root {
+  --color-bg-primary: #181a19;
+  --color-bg-secondary: #222523;
+  --color-accent: #c7ff4a;
+  --color-text-light: #f7f7f2;
+  --color-text-muted: #aaafa8;
+  --color-bg-ivory: #f4f2eb;
+  --color-text-dark: #20231f;
+  --color-border-dark: rgba(255, 255, 255, 0.13);
+  --color-border-light: rgba(24, 26, 25, 0.12);
+
+  /* Theme defaults: dark */
+  color-scheme: dark;
+
+  --radius: 0.625rem;
+
+  --background: #181a19;
+  --foreground: #f7f7f2;
+
+  --card: #222523;
+  --card-foreground: #f7f7f2;
+
+  --popover: #222523;
+  --popover-foreground: #f7f7f2;
+
+  --primary: #c7ff4a;
+  --primary-foreground: #181a19;
+
+  --secondary: #2d302e;
+  --secondary-foreground: #f7f7f2;
+
+  --muted: #2d302e;
+  --muted-foreground: #aaafa8;
+
+  --accent: #c7ff4a;
+  --accent-foreground: #181a19;
+
+  --destructive: #f87171;
+  --destructive-foreground: #181a19;
+
+  --border: rgba(255, 255, 255, 0.13);
+  --input: rgba(255, 255, 255, 0.16);
+  --ring: #c7ff4a;
+
+  /* Chart palette */
+  --chart-1: #c7ff4a;
+  --chart-2: #8dcb63;
+  --chart-3: #78a9a0;
+  --chart-4: #d7b56d;
+  --chart-5: #aaafa8;
+}
+
+/* ========================================
+   OPTIONAL LIGHT THEME
+   Activated with the .light class
+======================================== */
+
+.light {
+  color-scheme: light;
+
+  --background: #f4f2eb;
+  --foreground: #20231f;
+
+  --card: #ffffff;
+  --card-foreground: #20231f;
+
+  --popover: #ffffff;
+  --popover-foreground: #20231f;
+
+  --primary: #181a19;
+  --primary-foreground: #f7f7f2;
+
+  --secondary: #eae8e1;
+  --secondary-foreground: #20231f;
+
+  --muted: #eae8e1;
+  --muted-foreground: #646960;
+
+  --accent: #c7ff4a;
+  --accent-foreground: #181a19;
+
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+
+  --border: rgba(24, 26, 25, 0.12);
+  --input: rgba(24, 26, 25, 0.16);
+  --ring: #729d20;
+}
+
+/* ========================================
+   BASE STYLES
+======================================== */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-space-grotesk), ui-sans-serif, sans-serif;
+  }
+
+  ::selection {
+    color: #181a19;
+    background: #c7ff4a;
+  }
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR
+======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #181a19;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333735;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #44484a;
+}
+
+/* ========================================
+   ACCESSIBILITY — FOCUS RING
+======================================== */
+
+.focus-lime:focus-visible {
+  outline: 2px solid #c7ff4a;
+  outline-offset: 2px;
+}
