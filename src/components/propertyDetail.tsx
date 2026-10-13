@@ -448,7 +448,7 @@ export default function PropertyDetail({
 
       {/* --------------------------- Gallery + summary card --------------------------- */}
       <section className="mx-auto max-w-[1600px] px-6 lg:px-12">
-        <div className="grid gap-10 lg:grid-cols-[1.7fr_1fr] lg:gap-14">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:gap-14">
           <PropertyGallery images={property.gallery} alt={property.alt} />
 
           <aside className="summary lg:sticky lg:top-28 lg:self-start">

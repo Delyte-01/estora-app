@@ -180,7 +180,7 @@ export default function PropertyGallery({ images, alt }: PropertyGalleryProps) {
   if (count === 0) return null;
 
   return (
-    <div ref={root} data-gal className="flex flex-col gap-4">
+    <div ref={root} data-gal className="flex min-w-0 flex-col gap-4">
       {/* Hide animated parts until GSAP has set their start state (prevents flash) */}
       <style>{`[data-gal]:not([data-ready]) .reveal{opacity:0}`}</style>
 
